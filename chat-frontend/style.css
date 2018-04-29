@@ -1,0 +1,114 @@
+*/* {
+
+    font-family: Arial, Helvetica, Sans-serif;
+    font-size: 15px
+}
+body {
+    position: relative;
+}
+.headerMenu {
+    background-image: url(images/background.jpg);
+    height: 38px;
+    border-bottom: 0px;
+    padding-left: auto;
+    padding-right: auto;
+    width: 100%;
+}
+#wrapper {
+    margin-right: auto;
+    width: 1000px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.logo {
+    width: 125px;
+}
+.logo img {
+    width: 135px;
+    height: 125px;
+}
+.searchBox {
+    /background-image: url(../images/find.png);/
+    position: absolute;
+    top: 78px;
+    margin-left: 135px;
+    padding: 10PX;
+}
+#search input[type="text"] {
+    background: #D0D0D0;
+    outline: none;
+    border: 0 none;
+    font: bold 12px Arial, Helvetica, Sans-serif;
+    width: 350px;
+    padding: 6px 15px 6px 35px;
+}
+#search input[type="text"]:focus {
+    background: #FCFCFC;
+    color: #6A6F75;     /color for the typing/
+    width: 350px;
+}
+
+#login {		/CSS FOR HEADER IN loginPage
+    position: fixed;
+    padding: 13px;
+    width: 30%;
+    height: 30%;
+    background: #C0C0C0;
+    top: 200px;
+    left: 35%;
+    font-family: 'Marko One'; font-size: 22px;
+    z-index: 100;
+}
+
+#signup {
+    position: fixed;
+    padding: 13px;
+    width: 30%;
+    height: 60%;
+    background: #C0C0C0;
+    top: 200px;
+    left: 35%;
+    font-family: 'Marko One'; font-size: 22px;
+    z-index: 100;
+}
+
+#footer {		/CSS FOR FOOTER IN ALL PAGES /
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: none;
+    text-align: center;
+
+}
+*/
+form { 
+    background: #000; 
+    padding: 3px; 
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+}
+form input { 
+    border: 0; 
+    padding: 10px; 
+    width: 90%; 
+    margin-right: .5%; 
+}
+form button { 
+    width: 9%; 
+    background: rgb(130, 224, 255); 
+    border: none; 
+    padding: 10px; 
+}
+#messages { 
+    list-style-type: 
+    none; margin: 0; 
+    padding: 0; 
+}
+#messages li { 
+    padding: 5px 10px; 
+}
+#messages li:nth-child(odd) { 
+    background: #eee; 
+}
