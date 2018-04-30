@@ -26,30 +26,132 @@
       </script>
 
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      * { margin: 1px; padding: 5px; box-sizing: 0; } 
+      body { font-family: Arial, Helvetica, Sans-serif; font-size: 15px}
+      /* css for message input and send button */
+      form { background: #000; padding: 3px; position: fixed; bottom: 10%; width: 50%; } 
+      form input { border: 0; padding: 10px; width: 84%; margin-right: .5%; }
+      form button { width: 11%; background:  #FF7F50; border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+
+      /* css for text area and inserted name */
+      .chat-messages { border: 2px solid #bbb; }
+      .chat-messages { width: 50%; height: 450px; padding: 10px; overflow-y: scroll; }/* adding scroll for more messages */
+      .chat-message { margin-bottom: 20px; } /* adding space between two messages  */
+      .chat-name { width: 50%; padding: 10px; border-top: 50px; border-bottom: 0; margin: 0; }
+
+      /* css for header, logo, search box, logi and sign up */
+      .headerMenu { background-image: url(images/background.jpg); position: fixed; height: 38px; border-bottom: 1px; padding-left: auto; padding-right: auto; width: 100%; }
+      .logo { width: 125px; }
+      .logo img { width: 135px; height: 125px; }
+      .searchBox { background-image: url(../images/find.png); position: absolute; top: 78px; margin-left: 135px; 
+        padding: 10px; }
+      #search input[type="text"] { background: #D0D0D0; outline: none; border: 0 none; font: bold 12px Arial, Helvetica, Sans-serif; width: 350px; padding: 6px 15px 6px 35px; }
+      #search input[type="text"]:focus { background: #FCFCFC; color: #6A6F75; width: 350px; }
+      #login, #signup { position: fixed; padding: 13px; width: 30%; height: 30%; background: #C0C0C0; top: 200px; left: 35%;font-family: 'Marko One'; font-size: 22px; z-index: 100; }
+
+      /* css for text area and inserted name */
+      #footer { position: fixed; left: 0; bottom: 0; width: 100%; background: none; text-align: center; }
     </style>
 
 </head>
 
 <body>
 
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+    <div class="headerMenu">
+          <div class="logo">
+              <img src="images/logo.jpg">
+          </div> <!-- Closing logo -->
 
-  <!-- The page contents are added by JavaScript -->
+          <div class="searchBox"> <!-- Creating a search box -->
+              <form action="search.html" method="GET" id="search">
+                  <input type="text" name="q" size="60" placeholder ="Search..." />
+              </form>
+          </div><!-- Closing search_box -->
+
+          <div id="menu">
+              <a href="index.html" />Home</a>
+              <a href="#" onclick="document.getElementById('login').style.display = ''" />Log in</a>
+              <a href="#" onclick="document.getElementById('signup').style.display = ''" />Sign up</a>
+          </div> <!-- Closing menu -->
+    </div> <!-- Closing headerMenu -->
+
+
+    <div class="chat">
+        <input type="text" class="chat-name" placeholder="Name: ">
+        <div class="chat-messages">
+            <!-- Outcomming message comes here -->
+        </div> <!-- Closing chat-messages -->
+        <ul id="messages"></ul>
+          <form>
+            <input id="m" autocomplete="off" placeholder="Type your message here" /><button>Send</button>
+          </form>
+    </div> <!-- Closing chat -->
+
+    <div id="footer">
+      <p> &copy; 2018 Julia Gabajova for <a href="http://www.mdx.ac.uk/">Middlesex University</a></p>
+    </div> <!--end of footer-->
+
+ 
+     <div id="signup" style="display: none;">
+        <div class="register">
+            <h2>Sign Up</h2>
+
+            <div class="form-group">
+                <label><b>Name: </b></label>
+                <input type="text" id = "name" placeholder="Enter User your Name" name="Name" required>
+            </div>
+
+            <div class="form-group">
+                <label><b>User ID: </b></label>
+                <input type="text" id = "userId" placeholder="Enter User ID" name="User ID" required>
+            </div>  <!-- End of form-group -->
+
+            <div class="form-group">
+                <label><b>Email address: </b></label>
+                <input type="text" id = "emailAddress" placeholder="Enter Email" name="email" required>
+            </div>  <!-- End of form-group -->
+
+            <div class="form-group">
+                <label><b>Password: </b></label>
+                <input type="password" id = "password" placeholder="Enter Password" name="psw" required>
+            </div>  <!-- End of form-group -->
+
+
+            <button type="button" onclick="signUp()">Sign up</button>
+            <p id="result"></p>
+        </div> <!-- End of register div -->
+
+        <span onclick="document.getElementById('signup').style.display = 'none'">close</span>
+    </div> <!-- End of sign up div -->
+
+    <div id="login" style="display: none;">
+        <div class="login">
+            <h2>Log in</h2>
+
+            <div class="form-group">
+                <label><b>User ID: </b></label>
+                <input type="text" id = "loginUserId" placeholder="Enter Username" name="uname" required>
+            </div>  <!-- End of form-group -->
+
+            <div class="form-group">
+                <label><b>Password: </b></label>
+                <input type="password" id = "loginPassword" placeholder="Enter Password" name="psw" required>
+            </div>  <!-- End of form-group -->
+
+            <button type="button" onclick = "login()">Login</button>
+
+            <p id="loginFailure"></p>
+            <p id="log-In"></p>
+        </div>
+        <span onclick="document.getElementById('login').style.display = 'none'">close</span>
+    </div><!-- End of login -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
 
-  </body>
+</body>
 </html>
