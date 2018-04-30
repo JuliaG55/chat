@@ -35,27 +35,19 @@ app.get('/', function (request, response) {
     });
 });
 
-// app.get('/index.html', function(req, res){
-//   res.sendFile(__dirname + '../chat-frontend/index.html');
-// });
-
 //Chat application with socket.io
 io.on('connection', function(socket){ 
   console.log('a user connected');    //user conected
   socket.on('disconnect', function(){
     console.log('user disconnected');  //user disconect
   });
-});
 
-
-io.on('connection', function(socket){ 
   socket.on('chat message', function(msg){  //print the chat message 
     console.log('message: ' + msg);
   });
-});
 
-io.on('connection', function(socket){
   socket.on('chat message', function(msg){  //send a message including myself,
     io.emit('chat message', msg);       //send a message to evryone (using emit)
   });
+
 });
