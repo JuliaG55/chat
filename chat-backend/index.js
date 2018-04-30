@@ -8,7 +8,6 @@ var mysql = require('mysql');
 var app = express();
 app.use(cors());
 app.use(express.static('public')); 
-//app.server = http.createServer(app);
 app.listen(8080);
 
 var connect = mysql.createConnection({
@@ -36,6 +35,9 @@ app.get('/', function (request, response) {
     });
 });
 
+// app.get('/index.html', function(req, res){
+//   res.sendFile(__dirname + '../chat-frontend/index.html');
+// });
 
 //Chat application with socket.io
 io.on('connection', function(socket){ 
